@@ -10,6 +10,8 @@ services:
       - '24224:24224'
     volumes:
       - ./forwarder/:/fluentd/
+    depends_on:
+      - aggregator
 
   aggregator:
     build:
