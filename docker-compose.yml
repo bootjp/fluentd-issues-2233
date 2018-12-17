@@ -1,0 +1,21 @@
+version: "3.2"
+
+services:
+
+  forwarder:
+    build:
+      context: .
+      dockerfile: v1Dockerfile
+    ports:
+      - '24224:24224'
+    volumes:
+      - ./forwarder/:/fluentd/
+
+  aggregator:
+    build:
+      context: .
+      dockerfile: v0Dockerfile
+    ports:
+      - '24284:24284'
+    volumes:
+      - ./aggregator/:/fluentd/

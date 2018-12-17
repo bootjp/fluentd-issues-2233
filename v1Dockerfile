@@ -1,0 +1,4 @@
+FROM fluent/fluentd:v1.3.1
+
+
+CMD exec fluentd -v -c /fluentd/fluent.conf -p /fluentd/plugins $FLUENTD_OPT

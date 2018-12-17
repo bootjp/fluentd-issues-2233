@@ -1,0 +1,12 @@
+FROM fluent/fluentd:v0.12
+
+ENV PACKAGES "sudo build-base ruby-dev"
+ENV PLUGINS " fluent-plugin-secure-forward "
+
+RUN apk add --update --virtual .build-deps ${PACKAGES} \
+ && sudo gem install ${PLUGINS} \
+ && sudo gem sources --clear-all \
+ && apk del .build-deps \
+ && rm -rf /var/cache/apk/*
+
+CMD exec fluentd -v -c /fluentd/fluent.conf -p /fluentd/plugins $FLUENTD_OPT
