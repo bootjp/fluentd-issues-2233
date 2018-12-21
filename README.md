@@ -1,5 +1,7 @@
 # fluentd-issues-2233
 
+**this issue fixed by change to `require ack response false`**
+
 ## how to use
 
 ```bash
